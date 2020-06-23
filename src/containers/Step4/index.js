@@ -61,14 +61,14 @@ export class index extends Component {
           />
           <View style={style.bodyContainer}>
             {this.renderQuestions({
-              text: 'Best eye response[E]',
+              text: 'Best eye response (E)',
               fieldName: this.state.GCSBestEyeResponse,
               action: index => this.setState({GCSBestEyeResponse: index}),
               options: [
                 'No eye opening (1)',
                 'Eye opening in response to pain (2)',
                 'Eye opening to speech (3)',
-                'Eye opening spontaneosuly(4)',
+                'Eye opening spontaneosuly (4)',
               ],
             })}
             {this.renderQuestions({
@@ -77,8 +77,8 @@ export class index extends Component {
               action: index => this.setState({GCSBestVerbalResponse: index}),
               options: [
                 'No verbal response (1)',
-                'Incomrehensible sounds (2)',
-                'Inappropiate words (3)',
+                'Incomprehensible sounds (2)',
+                'Inappropriate words (3)',
                 'Confused (4)',
                 'Oriented (5)',
               ],
@@ -92,7 +92,7 @@ export class index extends Component {
                 'Extension to pain (2)',
                 'Abnormal flexion to pain (3)',
                 'Flexion/Withdrawal to pain (4)',
-                'Localize to pain (5)',
+                'Localizes to pain (5)',
                 'Obeys commands (6)',
               ],
             })}
@@ -119,7 +119,7 @@ export class index extends Component {
             selectedIndex={data.fieldName}
             onChange={index => data.action(index)}>
             {data.options.map((item, index) => {
-              return <Radio>{item}</Radio>;
+              return <Radio key={item => `${item}`}>{item}</Radio>;
             })}
           </RadioGroup>
         </View>

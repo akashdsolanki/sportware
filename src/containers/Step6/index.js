@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-mount-set-state */
 /* eslint-disable no-shadow */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
@@ -14,6 +15,7 @@ import InfoModel from '../../helper/InfoModal';
 
 export class index extends Component {
   state = {
+    pageNo: 1,
     immem1_1: undefined,
     immem1_2: undefined,
     immem1_3: undefined,
@@ -36,6 +38,11 @@ export class index extends Component {
     subTitle: '',
   };
 
+  componentDidMount() {
+    let pageNo = this.props.pageNo;
+    this.setState({pageNo: pageNo});
+  }
+
   render() {
     return this.renderMainView();
   }
@@ -46,9 +53,9 @@ export class index extends Component {
         <View style={style.slide}>
           <View style={{flexDirection: 'row'}}>
             <Text style={[style.title, {marginLeft: 20, flex: 1}]}>
-              STEP-3B MEMORY IMMEDIATE
+              STEP-3B IMMEDIATE MEMORY
             </Text>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={style.infoCircle}
               onPress={() =>
                 this.setState({
@@ -58,7 +65,7 @@ export class index extends Component {
                 })
               }>
               {infoCircle}
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <View
             style={{
@@ -67,116 +74,9 @@ export class index extends Component {
               marginBottom: 10,
             }}
           />
-          <View>
-            {this.renderQuestions({
-              data: {
-                trial: 1,
-                text: 'ELBOW',
-              },
-              fieldName: this.state.immem1_1,
-              action: index => this.setState({immem1_1: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'APPLE',
-              },
-              fieldName: this.state.immem1_2,
-              action: index => this.setState({immem1_2: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'CARPET',
-              },
-              fieldName: this.state.immem1_3,
-              action: index => this.setState({immem1_3: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'SADDLE',
-              },
-              fieldName: this.state.immem1_4,
-              action: index => this.setState({immem1_4: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'BUBBLE',
-              },
-              fieldName: this.state.immem1_5,
-              action: index => this.setState({immem1_5: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                trial: 2,
-                text: 'ELBOW',
-              },
-              fieldName: this.state.immem2_1,
-              action: index => this.setState({immem2_1: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'APPLE',
-              },
-              fieldName: this.state.immem2_2,
-              action: index => this.setState({immem2_2: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'CARPET',
-              },
-              fieldName: this.state.immem2_3,
-              action: index => this.setState({immem2_3: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'SADDLE',
-              },
-              fieldName: this.state.immem2_4,
-              action: index => this.setState({immem2_4: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'BUBBLE',
-              },
-              fieldName: this.state.immem2_5,
-              action: index => this.setState({immem2_5: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                trial: 3,
-                text: 'ELBOW',
-              },
-              fieldName: this.state.immem3_1,
-              action: index => this.setState({immem3_1: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'APPLE',
-              },
-              fieldName: this.state.immem3_2,
-              action: index => this.setState({immem3_2: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'CARPET',
-              },
-              fieldName: this.state.immem3_3,
-              action: index => this.setState({immem3_3: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'SADDLE',
-              },
-              fieldName: this.state.immem3_4,
-              action: index => this.setState({immem3_4: index}),
-            })}
-            {this.renderQuestions({
-              data: {
-                text: 'BUBBLE',
-              },
-              fieldName: this.state.immem3_5,
-              action: index => this.setState({immem3_5: index}),
-            })}
-          </View>
+          {this.state.pageNo === 1 && this.renderPageNo1Questions()}
+          {this.state.pageNo === 2 && this.renderPageNo2Questions()}
+          {this.state.pageNo === 3 && this.renderPageNo3Questions()}
         </View>
         <InfoModel
           visible={this.state.visible}
@@ -186,6 +86,351 @@ export class index extends Component {
           desc={this.state.desc}
         />
       </ScrollView>
+    );
+  };
+
+  renderPageNo1Questions = () => {
+    return (
+      <View>
+        {this.renderQuestions({
+          data: {
+            trial: 1,
+            text: 'ELBOW',
+          },
+          fieldName: this.state.immem1_1,
+          action: index => this.setState({immem1_1: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'APPLE',
+          },
+          fieldName: this.state.immem1_2,
+          action: index => this.setState({immem1_2: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'CARPET',
+          },
+          fieldName: this.state.immem1_3,
+          action: index => this.setState({immem1_3: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'SADDLE',
+          },
+          fieldName: this.state.immem1_4,
+          action: index => this.setState({immem1_4: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'BUBBLE',
+          },
+          fieldName: this.state.immem1_5,
+          action: index => this.setState({immem1_5: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            trial: 2,
+            text: 'ELBOW',
+          },
+          fieldName: this.state.immem2_1,
+          action: index => this.setState({immem2_1: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'APPLE',
+          },
+          fieldName: this.state.immem2_2,
+          action: index => this.setState({immem2_2: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'CARPET',
+          },
+          fieldName: this.state.immem2_3,
+          action: index => this.setState({immem2_3: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'SADDLE',
+          },
+          fieldName: this.state.immem2_4,
+          action: index => this.setState({immem2_4: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'BUBBLE',
+          },
+          fieldName: this.state.immem2_5,
+          action: index => this.setState({immem2_5: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            trial: 3,
+            text: 'ELBOW',
+          },
+          fieldName: this.state.immem3_1,
+          action: index => this.setState({immem3_1: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'APPLE',
+          },
+          fieldName: this.state.immem3_2,
+          action: index => this.setState({immem3_2: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'CARPET',
+          },
+          fieldName: this.state.immem3_3,
+          action: index => this.setState({immem3_3: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'SADDLE',
+          },
+          fieldName: this.state.immem3_4,
+          action: index => this.setState({immem3_4: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'BUBBLE',
+          },
+          fieldName: this.state.immem3_5,
+          action: index => this.setState({immem3_5: index}),
+        })}
+      </View>
+    );
+  };
+
+  renderPageNo2Questions = () => {
+    return (
+      <View>
+        {this.renderQuestions({
+          data: {
+            trial: 1,
+            text: 'Candle',
+          },
+          fieldName: this.state.immem1_1,
+          action: index => this.setState({immem1_1: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Paper',
+          },
+          fieldName: this.state.immem1_2,
+          action: index => this.setState({immem1_2: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Sugar',
+          },
+          fieldName: this.state.immem1_3,
+          action: index => this.setState({immem1_3: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Sandwich',
+          },
+          fieldName: this.state.immem1_4,
+          action: index => this.setState({immem1_4: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Wagon',
+          },
+          fieldName: this.state.immem1_5,
+          action: index => this.setState({immem1_5: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            trial: 2,
+            text: 'Candle',
+          },
+          fieldName: this.state.immem2_1,
+          action: index => this.setState({immem2_1: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Paper',
+          },
+          fieldName: this.state.immem2_2,
+          action: index => this.setState({immem2_2: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Sugar',
+          },
+          fieldName: this.state.immem2_3,
+          action: index => this.setState({immem2_3: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Sandwich',
+          },
+          fieldName: this.state.immem2_4,
+          action: index => this.setState({immem2_4: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Wagon',
+          },
+          fieldName: this.state.immem2_5,
+          action: index => this.setState({immem2_5: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            trial: 3,
+            text: 'Candle',
+          },
+          fieldName: this.state.immem3_1,
+          action: index => this.setState({immem3_1: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Paper',
+          },
+          fieldName: this.state.immem3_2,
+          action: index => this.setState({immem3_2: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Sugar',
+          },
+          fieldName: this.state.immem3_3,
+          action: index => this.setState({immem3_3: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Sandwich',
+          },
+          fieldName: this.state.immem3_4,
+          action: index => this.setState({immem3_4: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Wagon',
+          },
+          fieldName: this.state.immem3_5,
+          action: index => this.setState({immem3_5: index}),
+        })}
+      </View>
+    );
+  };
+
+  renderPageNo3Questions = () => {
+    return (
+      <View>
+        {this.renderQuestions({
+          data: {
+            trial: 1,
+            text: 'Baby',
+          },
+          fieldName: this.state.immem1_1,
+          action: index => this.setState({immem1_1: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Monkey',
+          },
+          fieldName: this.state.immem1_2,
+          action: index => this.setState({immem1_2: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Perfume',
+          },
+          fieldName: this.state.immem1_3,
+          action: index => this.setState({immem1_3: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'SUNSET',
+          },
+          fieldName: this.state.immem1_4,
+          action: index => this.setState({immem1_4: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Iron',
+          },
+          fieldName: this.state.immem1_5,
+          action: index => this.setState({immem1_5: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            trial: 2,
+            text: 'Baby',
+          },
+          fieldName: this.state.immem2_1,
+          action: index => this.setState({immem2_1: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Monkey',
+          },
+          fieldName: this.state.immem2_2,
+          action: index => this.setState({immem2_2: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Perfume',
+          },
+          fieldName: this.state.immem2_3,
+          action: index => this.setState({immem2_3: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'SUNSET',
+          },
+          fieldName: this.state.immem2_4,
+          action: index => this.setState({immem2_4: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Iron',
+          },
+          fieldName: this.state.immem2_5,
+          action: index => this.setState({immem2_5: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            trial: 3,
+            text: 'Baby',
+          },
+          fieldName: this.state.immem3_1,
+          action: index => this.setState({immem3_1: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Monkey',
+          },
+          fieldName: this.state.immem3_2,
+          action: index => this.setState({immem3_2: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Perfume',
+          },
+          fieldName: this.state.immem3_3,
+          action: index => this.setState({immem3_3: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'SUNSET',
+          },
+          fieldName: this.state.immem3_4,
+          action: index => this.setState({immem3_4: index}),
+        })}
+        {this.renderQuestions({
+          data: {
+            text: 'Iron',
+          },
+          fieldName: this.state.immem3_5,
+          action: index => this.setState({immem3_5: index}),
+        })}
+      </View>
     );
   };
 

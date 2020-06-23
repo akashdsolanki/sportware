@@ -16,6 +16,7 @@ import Picker from '../../helper/ModalPicker/Picker';
 
 export class index extends Component {
   state = {
+    selectedstance: undefined,
     BessFoot: undefined,
     BessSurface: '',
     BessFootwear: '',
@@ -46,6 +47,18 @@ export class index extends Component {
   render() {
     return this.renderMainView();
   }
+
+  _setStanceValue = val => {
+    const {selectedstance} = this.state;
+
+    if (selectedstance === 'double') {
+      this.setState({BessDouble: val});
+    } else if (selectedstance === 'single') {
+      this.setState({BessSingle: val});
+    } else if (selectedstance === 'tandem') {
+      this.setState({BessTandem: val});
+    }
+  };
 
   renderMainView = () => {
     return (
@@ -99,16 +112,19 @@ export class index extends Component {
               6cm)
             </Text>
             {this.renderDropdown({
+              selectedstance: 'double',
               text:
                 'Double leg stance: Stand with your feet together, hands on your hips and with your eyes closed.',
               fieldName: this.state.BessDouble,
             })}
             {this.renderDropdown({
+              selectedstance: 'single',
               text:
                 'Single leg stance: Stand on your non-dominant foot. The dominant leg should be held in approximately 30 degree of hip flexion and 45 degree of knee flexion.',
               fieldName: this.state.BessSingle,
             })}
             {this.renderDropdown({
+              selectedstance: 'tandem',
               text:
                 'Tandem stance: Stand heel-to-toe with your non-dominant foot in back.',
               fieldName: this.state.BessTandem,
@@ -125,7 +141,7 @@ export class index extends Component {
         <Picker
           data={this.state.pickerData}
           selectedValue={this.state.selectedValue}
-          selectPicker={val => this.setState({BessDouble: val})}
+          selectPicker={val => this._setStanceValue(val)}
           onClose={() => this.setState({isPicker: false})}
           close={this.state.isPicker}
         />
@@ -176,7 +192,9 @@ export class index extends Component {
         }}>
         <TouchableOpacity
           style={{flex: 1}}
-          onPress={() => this.setState({isPicker: true})}>
+          onPress={() =>
+            this.setState({isPicker: true, selectedstance: data.selectedstance})
+          }>
           <TextInput
             editable={false}
             pointerEvents="none"

@@ -28,6 +28,30 @@ export class index extends Component {
     subTitle: '',
   };
 
+  saveStep2Data = () => {
+    const {
+      SignsWitnessed,
+      SignsObservedOnVideo,
+      SignsLyingMotionless,
+      SignsBalanceMotorIncoord,
+      SignsDisorientConfusion,
+      SignsBlankOrVacantLook,
+      SignsFacialInjury,
+    } = this.state;
+
+    const obj = [
+      SignsWitnessed,
+      SignsObservedOnVideo,
+      SignsLyingMotionless,
+      SignsBalanceMotorIncoord,
+      SignsDisorientConfusion,
+      SignsBlankOrVacantLook,
+      SignsFacialInjury,
+    ];
+
+    return obj;
+  };
+
   render() {
     return this.renderMainView();
   }

@@ -40,7 +40,7 @@ export class index extends Component {
             <Text style={[style.title, {marginLeft: 20, flex: 1}]}>
               STEP-3 MEMORY ASSESSMENT
             </Text>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={style.infoCircle}
               onPress={() =>
                 this.setState({
@@ -52,7 +52,7 @@ export class index extends Component {
                 })
               }>
               {infoCircle}
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <View
             style={{
@@ -114,6 +114,7 @@ export class index extends Component {
           style={[style.input]}
           multiline
           numberOfLines={5}
+          placeholder="Answer"
           onChangeText={val => this.setState({inputValue: val})}
         />
       </View>

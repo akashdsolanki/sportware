@@ -47,9 +47,9 @@ export class index extends Component {
         <View style={style.slide}>
           <View style={{flexDirection: 'row'}}>
             <Text style={[style.title, {marginLeft: 20, flex: 1}]}>
-              STEP-2B SYMPTOM EVALUATION
+              STEP-2 SYMPTOM EVALUATION
             </Text>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={style.infoCircle}
               onPress={() =>
                 this.setState({
@@ -59,7 +59,7 @@ export class index extends Component {
                 })
               }>
               {infoCircle}
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <View
             style={{
@@ -125,12 +125,12 @@ export class index extends Component {
               action: index => this.setState({SymptomsFog: index}),
             })}
             {this.renderQuestions({
-              text: 'Don`t fill right',
+              text: "Don't fill right",
               fieldName: this.state.SymptomsDontFeelRight,
               action: index => this.setState({SymptomsDontFeelRight: index}),
             })}
             {this.renderQuestions({
-              text: 'Difficulty concentraiting',
+              text: 'Difficulty concentrating',
               fieldName: this.state.SymptomsDiffConc,
               action: index => this.setState({SymptomsDiffConc: index}),
             })}

@@ -30,6 +30,34 @@ export class index extends Component {
     subTitle: '',
   };
 
+  saveStep1Data = () => {
+    const {
+      EDFLAG_NeckPainTenderness,
+      REDFLAG_DoubleVision,
+      REDFLAG_TinglingBurning,
+      REDFLAG_Headache,
+      REDFLAG_SeizureConvulsion,
+      REDFLAG_LossConsciousness,
+      REDFLAG_DeterioratingConciousState,
+      REDFLAG_Vomiting,
+      REDFLAG_RestlessAgitationCombative,
+    } = this.state;
+
+    const obj = [
+      EDFLAG_NeckPainTenderness,
+      REDFLAG_DoubleVision,
+      REDFLAG_TinglingBurning,
+      REDFLAG_Headache,
+      REDFLAG_SeizureConvulsion,
+      REDFLAG_LossConsciousness,
+      REDFLAG_DeterioratingConciousState,
+      REDFLAG_Vomiting,
+      REDFLAG_RestlessAgitationCombative,
+    ];
+
+    return obj;
+  };
+
   render() {
     return this.renderMainView();
   }
