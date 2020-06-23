@@ -54,37 +54,37 @@ export class index extends Component {
             }}
           />
           <View>
-            {this.renderQuestions({
+            {this.renderScore({
               title: 'Symptom Score',
               fieldName: this.state.symtomScore,
               extraText: 'of 132',
             })}
-            {this.renderQuestions({
+            {this.renderScore({
               title: 'Memory Assessment Score',
               fieldName: this.state.memoryScore,
               extraText: 'of 5',
             })}
-            {this.renderQuestions({
+            {this.renderScore({
               title: 'GCS (E + V + M) Score',
               fieldName: this.state.GCSScore,
               extraText: 'of 15',
             })}
-            {this.renderQuestions({
+            {this.renderScore({
               title: 'Memory Immediate Score',
               fieldName: this.state.memoryIScore,
               extraText: 'of 15',
             })}
-            {this.renderQuestions({
+            {this.renderScore({
               title: 'Balance Examination Score',
               fieldName: this.state.balanceScore,
               extraText: 'of Second(S)',
             })}
-            {this.renderQuestions({
+            {this.renderScore({
               title: 'Delay Recall Score',
               fieldName: this.state.delayScore,
               extraText: 'of 5',
             })}
-            {this.renderQuestions({
+            {this.renderScore({
               title: 'Total Score',
               fieldName: this.state.totalScore,
               extraText: 'of 132',
@@ -102,7 +102,7 @@ export class index extends Component {
     );
   };
 
-  renderQuestions = data => {
+  renderScore = data => {
     return (
       <View style={style.bodyContainer}>
         <View style={style.trial}>

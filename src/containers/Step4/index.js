@@ -18,8 +18,6 @@ export class index extends Component {
     GCSBestEyeResponse: undefined,
     GCSBestVerbalResponse: undefined,
     GCSBestMotorResponse: undefined,
-    MaddocksLastTeam: undefined,
-    MaddocksWin: undefined,
     //modal
     visible: false,
     note: '',
@@ -60,7 +58,7 @@ export class index extends Component {
             }}
           />
           <View style={style.bodyContainer}>
-            {this.renderQuestions({
+            {this.renderMultiOptionsQuestion({
               text: 'Best eye response (E)',
               fieldName: this.state.GCSBestEyeResponse,
               action: index => this.setState({GCSBestEyeResponse: index}),
@@ -71,7 +69,7 @@ export class index extends Component {
                 'Eye opening spontaneosuly (4)',
               ],
             })}
-            {this.renderQuestions({
+            {this.renderMultiOptionsQuestion({
               text: 'Best verbal response (V)',
               fieldName: this.state.GCSBestVerbalResponse,
               action: index => this.setState({GCSBestVerbalResponse: index}),
@@ -83,7 +81,7 @@ export class index extends Component {
                 'Oriented (5)',
               ],
             })}
-            {this.renderQuestions({
+            {this.renderMultiOptionsQuestion({
               text: 'Best motor response',
               fieldName: this.state.GCSBestMotorResponse,
               action: index => this.setState({GCSBestMotorResponse: index}),
@@ -109,7 +107,7 @@ export class index extends Component {
     );
   };
 
-  renderQuestions = data => {
+  renderMultiOptionsQuestion = data => {
     return (
       <View style={{marginBottom: 10}}>
         <Text style={style.questionText}>{data.text}</Text>
